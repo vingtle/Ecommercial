@@ -1,0 +1,44 @@
+/* Container for the dropdown */
+.treatments-dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Title for dropdown */
+.dropdown-title {
+  color: #000;
+  font-weight: 500;
+  font-size: 1em;
+  padding: 8px;
+}
+
+/* Dropdown content styling */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px 0;
+  border-radius: 5px;
+}
+
+/* Each item in the dropdown */
+.dropdown-content div {
+  color: #007bff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.dropdown-content div:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show dropdown content on hover */
+.treatments-dropdown:hover .dropdown-content {
+  display: block;
+}
