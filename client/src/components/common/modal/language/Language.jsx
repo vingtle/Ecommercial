@@ -1,75 +1,88 @@
-import PropTypes from "prop-types";
-import { useState } from "react";
 import "./language.css";
+import { useState, useEffect, useRef } from "react";
 
-function Language({ isOpen, onClose }) {
-  const [selectedLanguage, setSelectedLanguage] = useState("");
+function Language() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const dropdownRef = useRef(null); // Reference to the dropdown container
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("selectedLanguage");
+    if (savedLanguage) {
+      setSelectedLanguage(savedLanguage);
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // If dropdownRef is assigned and the click happened outside of it
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    // Attach the click event listener to the document
+    document.addEventListener("click", handleClickOutside);
+
+    // Cleanup the event listener when the component is unmounted
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const handleSave = () => {
+    localStorage.setItem("selectedLanguage", selectedLanguage);
+    setIsOpen(false);
+  };
 
   return (
-    <div id="language-overlay">
-      <div className="language-conte">
-        <button type="button" className="close-btn" onClick={onClose}>
-          X
-        </button>
-        <h2>Select Language</h2>
-        <form>
-          <label>
-            <input
-              type="radio"
-              name="language"
-              value="English"
-              checked={selectedLanguage === "English"}
-              onChange={() => setSelectedLanguage("English")}
-            />
-            <span role="img" aria-label="flag">
-              🇺🇸
-            </span>{" "}
-            English
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="language"
-              value="French"
-              checked={selectedLanguage === "French"}
-              onChange={() => setSelectedLanguage("French")}
-            />
-            <span role="img" aria-label="flag">
-              🇫🇷
-            </span>{" "}
-            French
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="language"
-              value="Spanish"
-              checked={selectedLanguage === "Spanish"}
-              onChange={() => setSelectedLanguage("Spanish")}
-            />
-            <span role="img" aria-label="flag">
-              🇪🇸
-            </span>{" "}
-            Spanish
-          </label>
-          <div className="remember-selection">
-            <input type="checkbox" id="remember-selection" />
-            <label htmlFor="remember-selection">Remember my selection</label>
-          </div>
-          <button type="button" className="save-btn" onClick={onClose}>
-            Save
-          </button>
-        </form>
-      </div>
+    <div id="language-dropdown" ref={dropdownRef}>
+      <button type="button" onClick={toggleDropdown} className="dropdown-title">
+        Language
+      </button>
+      {isOpen && (
+        <div className="dropdown-content">
+          <form>
+            <label>
+              <input
+                type="radio"
+                name="language"
+                value="English"
+                checked={selectedLanguage === "English"}
+                onChange={() => setSelectedLanguage("English")}
+              />
+              English
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="language"
+                value="French"
+                checked={selectedLanguage === "French"}
+                onChange={() => setSelectedLanguage("French")}
+              />
+              French
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="language"
+                value="Spanish"
+                checked={selectedLanguage === "Spanish"}
+                onChange={() => setSelectedLanguage("Spanish")}
+              />
+              Spanish
+            </label>
+          </form>
+          <button type="button" onClick={handleSave} className="save-btn">Save</button>
+        </div>
+      )}
     </div>
   );
-}
-
-Language.propTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    onClose: PropTypes.func.isRequired,
 };
 
 export default Language;

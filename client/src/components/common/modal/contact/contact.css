@@ -1,91 +1,64 @@
-.contact-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.contact-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 350px;
+#contact-dropdown {
   position: relative;
-  text-align: center;
+  display: inline-block;
 }
 
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.dropdown-title {
+  cursor: pointer;
+  color: #000;
+  font-weight: 500;
+  font-size: 1em;
   background: none;
   border: none;
-  font-size: 18px;
+  transition:
+    color 0.3s ease,
+    border-bottom 0.3s ease;
+}
+
+.dropdown-title:hover {
+  color: #0891b2;
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.dropdown-content h2 {
+  color: #0891b2;
+}
+
+.dropdown-content form label {
+  display: block;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 
 .google-business-btn {
   display: inline-block;
-  background-color: #007bff;
+  background-color: #0891b2;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
   margin-top: 15px;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .google-business-btn:hover {
-  background-color: #0056b3;
+  background-color: #0891b2;
 }
 
 .small-text {
-  font-size: 0.9em;
+  font-size: 0.85em;
   color: gray;
   margin-top: 10px;
-}
-
-.contact-content h2 {
-  margin-top: 0;
-}
-
-form label {
-  display: flex;
-  align-items: center;
-  padding: 8px 0;
-  cursor: pointer;
-}
-
-form input[type="radio"] {
-  margin-right: 8px;
-}
-
-.remember-selection {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.remember-selection label {
-  margin-left: 5px;
-  font-size: 0.9em;
-}
-
-.save-btn {
-  background-color: #007bff;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 15px;
-}
-
-.save-btn:hover {
-  background-color: #0056b3;
+  line-height: 1.4;
 }

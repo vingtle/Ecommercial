@@ -7,7 +7,7 @@ function SearchInput() {
 
   const handleSearch = (e) => {
     if (e.key === "Enter" && query.trim() !== "") {
-              // Define keywords and their routes
+              
       const routes = {
         "waxing": "/treatments/waxing",
         "facial": "/treatments/advanced-skin-care",
@@ -22,14 +22,14 @@ function SearchInput() {
         "eyebrow": "/treatments/eyelash-extensions"
       };
 
-      // find a matching route for the keyword
+      
       const keyword = Object.keys(routes).find(key => query.toLowerCase().includes(key));
        
-      // if keyword is found, navigate to corresponding route
+     
       if (keyword) {
         navigate(routes[keyword]);
       } else {
-        // redirect to a general Treatments page 
+        
         navigate("/treatments");
       }
     }
