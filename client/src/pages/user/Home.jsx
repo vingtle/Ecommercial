@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; 
-import { FaPhoneAlt } from "react-icons/fa";
+import { FaPhoneAlt, FaStar } from "react-icons/fa";
 import "./home.css";
 
 function Home() {
@@ -16,14 +16,14 @@ function Home() {
     { id: 6, name: "Manicures & Pedicures", path: "/treatments/manicures-pedicures" },
   ];
 
-  // State to hold the reviews
+
   const [reviews, setReviews] = useState([]);
 
-  // Fetch reviews from backend API
+  
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        // Replace the URL below with your actual API endpoint
+    
         const response = await fetch("/api/reviews?limit=2&sortBy=date_desc");
         const data = await response.json();
         setReviews(data);
@@ -37,14 +37,14 @@ function Home() {
 
   return (
     <div id="homepage">
-      {/* Hero Section */}
+  
       <section className="hero-section">
         <div className="hero-text">
           <h1>Find your privacy, tailored beauty just for you</h1>
           <div className="hero-buttons">
             <button type="button"
               className="secondary-btn"
-              onClick={() => navigate("/Galleries")} // Navigate to Galleries page
+              onClick={() => navigate("/Galleries")} 
             >
               Learn More →
             </button>
@@ -84,16 +84,16 @@ function Home() {
           </div>
           <div>
             <h3>Contact Information</h3>
-            <div className="footer-icon-text">
-                            <FaPhoneAlt className="footer-icon" />
-                            <a href="tel:+33610322965" className="footer-link">
-                                +33(0) 610322965
+            <div className="icon-text">
+                            <FaPhoneAlt className="icon" />
+                            <a href="tel:+33610322965" className="link">
+                              +33(0) 610322965
                             </a>
                         </div>
                         <p>
         <strong>Email:</strong> 
-        <a href="mailto:mymiconsult@gmail.com" className="email-link">
-          mymiconsult@gmail.com
+        <a href="mailto:mymiconseil@gmail.com" className="email-link">
+          mymiconseil@gmail.com
         </a>
       </p>
             <p>
@@ -103,10 +103,17 @@ function Home() {
         </div>
       </section>
 
-      {/* Client Reviews */}
       <section className="client-reviews">
         <h2>Client Reviews</h2>
-        <p>★★★★★ 5 Stars (based on 55 reviews)</p>
+        <p>
+          <FaStar style={{ color: "#FFD700" }} />
+          <FaStar style={{ color: "#FFD700" }} />
+          <FaStar style={{ color: "#FFD700" }} />
+          <FaStar style={{ color: "#FFD700" }} />
+          <FaStar style={{ color: "#FFD700" }} />
+          5 Stars (based on 55 reviews)
+        </p>
+
         <div className="review-container">
           {reviews.length > 0 ? (
             reviews.map((review) => (

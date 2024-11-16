@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 function Language() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
-  const dropdownRef = useRef(null); // Reference to the dropdown container
+  const dropdownRef = useRef(null); 
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem("selectedLanguage");
@@ -15,7 +15,7 @@ function Language() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // If dropdownRef is assigned and the click happened outside of it
+      
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
@@ -45,7 +45,7 @@ function Language() {
         Language
       </button>
       {isOpen && (
-        <div className="dropdown-content">
+        <div className={`dropdown-content ${isOpen ? "open" : ""}`}>
           <form>
             <label>
               <input

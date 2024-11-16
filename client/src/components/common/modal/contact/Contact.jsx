@@ -28,7 +28,7 @@ useEffect(() => {
         Contact
       </button>
       {isOpen && (
-        <div className="dropdown-content">
+        <div className={`dropdown-content ${isOpen ? "open" : ""}`}>
           <h2>We'd love to hear from you!</h2>
           <p>Send us a message directly through Google Business.</p>
           <a 
