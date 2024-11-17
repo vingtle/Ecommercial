@@ -129,3 +129,19 @@ h3:hover {
   color: #ffffff;
   font-size: 65%;
 }
+
+@media screen and (max-width: 1060px) {
+  #footer.footer {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-copyright {
+    padding-left: 0;
+  }
+
+  .footer-links {
+    width: 100%;
+  }
+}

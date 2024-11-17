@@ -95,15 +95,12 @@
   cursor: pointer;
 }
 
-/* TABLET - up to 1060px */
 @media screen and (max-width: 1060px) {
-  /* Show the hamburger menu on tablet */
   .hamburger-menu {
     display: block;
     color: #000;
   }
 
-  /* Hide nav links by default on tablet */
   .nav-links {
     display: none;
     flex-direction: column;
@@ -124,9 +121,12 @@
   .navbar-search {
     display: none;
   }
+
+  .nav-btn {
+    display: none;
+  }
 }
 
-/* MOBILE - up to 600px */
 @media screen and (max-width: 600px) {
   #navbar {
     padding: 10px;
