@@ -12,13 +12,19 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prevState) => !prevState); 
   };
+
+  const handleLogoClick = () => {
+    setIsMenuOpen(false); // Close the menu when the logo is clicked
+    navigate("/"); // Navigate to home
+  };
+  
 
   return (
     <div id="navbar">
       <div
-        onClick={() => navigate("/")}
+        onClick={handleLogoClick}
         className="nav-logo"
         role="button"
         tabIndex="0"
@@ -30,24 +36,26 @@ function Navbar() {
       <div className="navbar-search">
         <SearchInput />
       </div>
+
       <div
-        onClick={toggleMenu}
         className="hamburger-menu"
+        onClick={toggleMenu}
         role="button"
         tabIndex="0"
         onKeyDown={(e) => e.key === "Enter" && toggleMenu()}
         aria-label="Toggle navigation menu"
+
       >
         <FaBars />
       </div>
 
-      <div className={`nav-links ${isMenuOpen ? "open" : ""}`} />
+      <div className={`nav-links ${isMenuOpen ? "open" : ""}`}>
       <div
-        onClick={() => navigate("/Home/homepage")}
+        onClick={() => navigate("/")}
         className="nav-btn"
         role="button"
         tabIndex="0"
-        onKeyDown={(e) => e.key === "Enter" && navigate("/Home/homepage")}
+        onKeyDown={(e) => e.key === "Enter" && navigate("/")}
       >
         Home
       </div>
@@ -78,6 +86,7 @@ function Navbar() {
       <div className="nav-btn">
         <Language />
       </div>
+    </div>
     </div>
   );
 }

@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
 #treatments-dropdown {
   position: relative;
   display: inline-block;
+  font-family: "Lato", sans-serif;
 }
 
 .dropdown-title {

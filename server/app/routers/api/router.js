@@ -10,6 +10,10 @@ const itemsRouter = require("./items/router");
 
 router.use("/items", itemsRouter);
 
+const uploadRouter = require('./upload/router');
+
+router.use('/api', uploadRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;

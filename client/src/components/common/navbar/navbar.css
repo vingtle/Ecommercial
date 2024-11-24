@@ -48,8 +48,11 @@
 
 .nav-links {
   display: flex;
+  padding: 10px 0;
+  margin-top: 0;
   align-items: center;
 }
+
 
 .nav-btn {
   margin: 0 10px;
@@ -102,7 +105,7 @@
   }
 
   .nav-links {
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -112,10 +115,16 @@
     left: 0;
     padding: 10px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(-20px);
+    opacity: 0;
   }
 
   .nav-links.open {
     display: flex;
+    transform: translateY(0);
+    opacity: 1;
   }
 
   .navbar-search {
@@ -123,8 +132,15 @@
   }
 
   .nav-btn {
-    display: none;
+    display: block;
+    margin: 10px auto;
+    width: 90%;
+    text-align: center;
+    color: black;
+    font-size: 1em;
   }
+
+
 }
 
 @media screen and (max-width: 600px) {
@@ -138,5 +154,6 @@
 
   .nav-btn {
     font-size: 0.9em;
+    margin: 5px auto;
   }
 }
